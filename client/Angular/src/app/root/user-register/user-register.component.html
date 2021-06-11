@@ -1,0 +1,128 @@
+<div class="container">
+  <div class="row justify-content-center form-login">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title mb-4">Register</h3>
+          <form (ngSubmit)="createUser(newUser)">
+            <div class="form-row">
+              <div class="col form-group">
+                <label>First Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="form-control"
+                  placeholder="ex. John"
+                  [(ngModel)]="newUser.name"
+                />
+              </div>
+              <div class="col form-group">
+                <label>Last Name</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  class="form-control"
+                  placeholder="ex. Doe"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                class="form-control"
+                placeholder="ex. name@gmail.com"
+                [(ngModel)]="newUser.email"
+              />
+              <small class="form-text text-muted">
+                We'll never share your email with anyone else.
+              </small>
+            </div>
+            <div class="form-group">
+              <label class="custom-control custom-radio custom-control-inline">
+                <input
+                  class="custom-control-input"
+                  checked=""
+                  type="radio"
+                  name="gender"
+                  value="male"
+                />
+                <span class="custom-control-label"> Male </span>
+              </label>
+              <label class="custom-control custom-radio custom-control-inline">
+                <input
+                  class="custom-control-input"
+                  type="radio"
+                  name="gender"
+                  value="female"
+                />
+                <span class="custom-control-label"> Female </span>
+              </label>
+            </div>
+            <div class="form-row">
+              <div class="col form-group">
+                <label>City</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="city"
+                  placeholder="ex. Kitchener"
+                />
+              </div>
+              <div class="col form-group">
+                <label>Country</label>
+                <select id="inputState" class="form-control">
+                  <option>Choose..</option>
+                  <option>United States</option>
+                  <option>Canada</option>
+                  <option>Mexico</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col form-group">
+                <label>Create Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  class="form-control"
+                  placeholder="ex. password@123"
+                  [(ngModel)]="newUser.password"
+                />
+                <small class="form-text text-muted">
+                  Please use a strong password. We didn't spend a lot on
+                  security.
+                </small>
+              </div>
+              <div class="col form-group">
+                <label>Repeat Password</label>
+                <input
+                  type="password"
+                  id="repeatPassword"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <button type="submit" class="btn btn-primary btn-block">
+                Register
+              </button>
+            </div>
+            <p class="text-muted">
+              By clicking the 'Register' button, you confirm that you accept our
+              Terms of use and Privacy Policy.
+            </p>
+          </form>
+        </div>
+        <div class="card-footer text-center">
+          Have an account?
+          <a href="user-login">Log in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

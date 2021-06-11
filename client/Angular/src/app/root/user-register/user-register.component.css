@@ -1,0 +1,19 @@
+.form-login {
+  margin: 3rem 0 0 0;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+}
+
+.card {
+  border: 0;
+  border-radius: 0 1rem 1rem 0;
+}
+.col-md-6 {
+  padding: 0;
+}
+.bg-image {
+  background-image: url("/assets/images/bg-image.jpg");
+  background-size: cover;
+  background-position: center center;
+  border-radius: 1rem 0 0 1rem;
+}

@@ -1,0 +1,114 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid" style="width: 85%">
+    <a class="navbar-brand" routerLink="">Global Shipment Service</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse justify-content-end"
+      id="navbarSupportedContent"
+    >
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="products" routerLinkActive="active"
+            >SHOP</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="about" routerLinkActive="active"
+            >ABOUT</a
+          >
+        </li>
+        <li class="nav-item">
+          <a *ngIf="globalService.isAdmin" class="nav-link" routerLink="admin" routerLinkActive="active"
+            >ADMIN</a
+          >
+        </li>
+        <div
+          *ngIf="globalService.showLogin; else showUser"
+          id="userlogin"
+          class="text-end ml-4"
+        >
+          <li class="nav-item">
+            <button
+              type="button"
+              class="btn btn-outline-dark mr-2"
+              routerLink="user-login"
+            >
+              Login
+            </button>
+            <button
+              type="button"
+              class="btn btn-warning mr-2"
+              routerLink="user-register"
+            >
+              Register
+            </button>
+          </li>
+        </div>
+        <ng-template #showUser>
+          <div class="text-end ml-4">
+            <li class="nav-item">
+              <div class="dropdown d-inline-block">
+                <a
+                  href="#"
+                  class="icontext mr-4 dropdown-toggle"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <span class="icon icon-xs rounded-circle bg-primary">
+                    <i class="fa fa-user white"></i>
+                  </span>
+                  <p class="text">Hi, {{ globalService.user.name }}</p>
+                </a>
+                <div
+                  class="dropdown-menu dropdown-menu-right"
+                  x-placement="bottom-end"
+                  style="
+                    position: absolute;
+                    will-change: transform;
+                    top: 0px;
+                    left: 0px;
+                    transform: translate3d(0px, 32px, 0px);
+                  "
+                >
+                  <a class="dropdown-item">My profile</a>
+                  <a class="dropdown-item" (click)="globalService.resetUser()"
+                    >Log out</a
+                  >
+                </div>
+                <a href="" class="widget-header mr-2">
+                  <div class="icon d-inline">
+                    <i
+                      class="icon-sm rounded-circle border fa fa-shopping-cart"
+                    ></i>
+                  </div>
+                </a>
+              </div>
+            </li>
+          </div>
+        </ng-template>
+      </ul>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">
+      © Developed by Group-10(MEAN stack) 2020-2021
+    </span>
+  </div>
+</footer>
