@@ -9,6 +9,9 @@ import { UserLoginComponent } from './root/user-login/user-login.component';
 import { UserRegisterComponent } from './root/user-register/user-register.component';
 import { RestApiService } from './rest-api.service';
 import { GlobalDataManager } from './global-data-manager.service';
+import { CreateComponent } from './root/create/create.component';
+import { MessageComponent } from './root/message/message.component';
+import { TrackingDetailsComponent } from './root/tracking-details/tracking-details.component';
 
 
 @NgModule({
@@ -16,6 +19,9 @@ import { GlobalDataManager } from './global-data-manager.service';
     AppComponent,
     UserLoginComponent,
     UserRegisterComponent,
+    CreateComponent,
+    MessageComponent,
+    TrackingDetailsComponent,
   ],
   imports: [
     BrowserModule, 

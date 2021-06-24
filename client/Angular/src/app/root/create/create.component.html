@@ -1,0 +1,57 @@
+<div class="container">
+<div class="card-body">
+        <h4 class="display-4">Post a Product for Shipment</h4>
+        <hr />
+        <app-message></app-message>
+        <form [formGroup]="form" (submit)="onSubmit()">
+          <div class="form-group">
+            <label class="form-control-label">Title</label>
+            <input
+              formControlName="name"
+              type="text"
+              id="name"
+              name="name"
+              class="form-control"
+            />
+          </div>
+        
+          <div class="form-group">
+            <label>Description</label>
+            <textarea
+              formControlName="description"
+              class="form-control"
+              id="description"
+              name="description"
+              rows="5"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label>Price</label>
+            <input
+              formControlName="price"
+              class="form-control"
+              id="price"
+              name="price"
+              rows="5"
+            />
+          </div>
+           <div class="form-group">
+            <label>Upload Image</label>
+            <input 
+              (change)="onFileSelect($event)" 
+              type="file" 
+              class="form-control-file"
+              />
+           </div>
+            <div *ngIf="imageData">
+              <img [src]="imageData" [alt]="form.value.name" />
+            </div>
+          <button
+            type="submit"
+            class="btn btn-success"
+          >
+            Post 
+          </button>
+        </form>
+      </div>
+</div>
