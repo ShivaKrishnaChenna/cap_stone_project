@@ -5,6 +5,7 @@ import { FormGroup, FormControl } from "@angular/forms";
 import { GlobalDataManager } from 'src/app/global-data-manager.service';
 import { Product } from 'src/app/models/product';
 import { RestApiService } from 'src/app/rest-api.service';
+//import { exit } from 'node:process';
 
 @Component({
   selector: 'app-create',
@@ -49,6 +50,20 @@ export class CreateComponent implements OnInit {
         this.globalService.error("Please enter the name.");
         return false;
     }
+    else if (this.form.value.description == null) {
+      this.globalService.error("Please enter description.");
+      return false;
+    }
+    else if (this.form.value.price == null) {
+      this.globalService.error("Please enter the price.");
+      return false;
+    }
+    else if (this.form.value.description == null) {
+      this.globalService.error("Please upload an image.");
+      return false;
+    }
+    
+    else
       return true;
     }
 

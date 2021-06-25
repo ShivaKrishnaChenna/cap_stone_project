@@ -12,7 +12,6 @@ import { RestApiService } from './../../rest-api.service';
 export class UserLoginComponent implements OnInit {
   public users: User[];
   public user: User;
-
   email = '';
   password = '';
 
@@ -47,14 +46,15 @@ export class UserLoginComponent implements OnInit {
   }
 
   validation() {
-    if (this.email == '' ) {
-        this.globalService.error("Please enter the email.");
-        return false;
-    }
-    else if (this.password == '') {
-      this.globalService.error("Please enter the password.");
+    if (this.email == '') {
+      this.globalService.error("Please enter email.");
       return false;
-    }
+  }
+  else if (this.password == '') {
+    this.globalService.error("Please enter password.");
+    return false;
+  }
+    else
       return true;
   }
 }

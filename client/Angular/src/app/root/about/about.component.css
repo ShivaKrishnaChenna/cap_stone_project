@@ -1,0 +1,17 @@
+.jumbotron {
+    color: #242424;
+    background-image: url("/assets/images/resource.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 25rem;
+  }
+
+  .square-banner {
+    color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 80rem;
+    background-image: url("/assets/images/Logistics.jpg");
+  }
