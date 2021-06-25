@@ -18,10 +18,12 @@ export class GlobalDataManager implements OnDestroy {
     public productsSelected: Product[] = [];
     public isDataPersisted = false;
     public user: User;
-    public showLogin = true;
+    public showLogin = localStorage.getItem('login') == 'Y' ? false : true;
     public isAdmin = false;
     
     constructor(private router: Router) {
+
+        this.user = JSON.parse(localStorage.getItem('user'));
         this.router.events.subscribe((event) => {
             if (event instanceof NavigationStart) {
               this.message = "";
@@ -32,9 +34,11 @@ export class GlobalDataManager implements OnDestroy {
   public ngOnDestroy(): void {}
 
     public setUser(user : User) {
+        localStorage.setItem('user', JSON.stringify(user));
         this.user = user;
         this.showLogin = false;
         this.isAdmin = this.user.isAdmin;
+        localStorage.setItem('login', 'Y');
     }
 
   public getUser(): User {
@@ -42,7 +46,9 @@ export class GlobalDataManager implements OnDestroy {
   }
 
   public resetUser() {
-    this.user = new User();
+    localStorage.setItem('login', 'N');
+    localStorage.setItem('user', null);
+    this.user = null;
     this.showLogin = true;
     this.isAdmin = false;
   }

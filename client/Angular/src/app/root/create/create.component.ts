@@ -5,6 +5,7 @@ import { FormGroup, FormControl } from "@angular/forms";
 import { GlobalDataManager } from 'src/app/global-data-manager.service';
 import { Product } from 'src/app/models/product';
 import { RestApiService } from 'src/app/rest-api.service';
+import { User } from 'src/app/models/user';
 //import { exit } from 'node:process';
 
 @Component({
@@ -17,6 +18,7 @@ export class CreateComponent implements OnInit {
   public product : Product;
   form: FormGroup;
   imageData: string;
+  public user : User;
 
   constructor(
     private router: Router,
@@ -24,11 +26,21 @@ export class CreateComponent implements OnInit {
     private globalService: GlobalDataManager) { }
 
   ngOnInit(): void {
+    this.user = this.globalService.user;
+
+    if(this.user == null) {
+      this.router.navigate(['user-login']);
+    }
+
     this.form = new FormGroup({
       name: new FormControl(null),
       description : new FormControl(null),
       price: new FormControl(null),
       image: new FormControl(null),
+      fullname : new FormControl(null),
+      address : new FormControl(null),
+      state : new FormControl(null),
+      phonenumber : new FormControl(null)
     });
   }
 
@@ -50,16 +62,19 @@ export class CreateComponent implements OnInit {
         this.globalService.error("Please enter the name.");
         return false;
     }
-    else if (this.form.value.description == null) {
-      this.globalService.error("Please enter description.");
-      return false;
-    }
     else if (this.form.value.price == null) {
-      this.globalService.error("Please enter the price.");
+      this.globalService.error("Please enter the price range of product.");
       return false;
     }
-    else if (this.form.value.description == null) {
+    else if (this.form.value.image == null) {
       this.globalService.error("Please upload an image.");
+      return false;
+    }
+    else if (this.form.value.fullname == null &&
+      this.form.value.phonenumber == null&&
+      this.form.value.address == null &&
+      this.form.value.state == null ) {
+      this.globalService.error("Please enter complete destination address.");
       return false;
     }
     
@@ -70,10 +85,12 @@ export class CreateComponent implements OnInit {
   public onSubmit(): void{
     if(this.validation()) {
     this.rest.createProduct(this.form.value.name,this.form.value.description,
-      this.form.value.price, this.form.value.image);
+      this.form.value.price, this.form.value.image, this.form.value.fullname,
+      this.form.value.address, this.form.value.state, this.form.value.phonenumber,
+      this.user._id.toString());
       this.form.reset();
       this.imageData = null;
-      // this.router.navigate(['admin']);
+      this.router.navigate(['']);
   }
   }
 }

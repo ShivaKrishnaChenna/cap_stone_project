@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import { GlobalDataManager } from 'src/app/global-data-manager.service';
 import { Product } from 'src/app/models/product';
+import { User } from 'src/app/models/user';
 import { RestApiService } from 'src/app/rest-api.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { RestApiService } from 'src/app/rest-api.service';
 export class TrackingDetailsComponent implements OnInit {
 
   public products : Product[];
+  public user : User;
 
   constructor(
     private router: Router,
@@ -19,11 +21,12 @@ export class TrackingDetailsComponent implements OnInit {
     private globalService: GlobalDataManager) { }
 
   ngOnInit(): void {
-    this.getProducts();
+    this.user = this.globalService.user;
+    this.getProducts(this.user._id);
   }
 
-  public getProducts() {
-    this.rest.getProducts()
+  public getProducts(userid) {
+    this.rest.getProductsByUserid(userid)
       .then((products : Product[] ) => {
         this.products = products;
       });
@@ -32,8 +35,12 @@ export class TrackingDetailsComponent implements OnInit {
   public deleteProduct(productId) {
     this.rest.deleteProduct(productId)
     .then((products : Product) => {
-      this.getProducts();
+      this.getProducts(this.user._id);
     });
   } 
+
+  public viewProductDetails(productId) {
+    this.router.navigate(['shipment-details/' + productId]);
+  }
 
 }

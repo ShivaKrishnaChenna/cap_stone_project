@@ -37,6 +37,20 @@ export class RestApiService {
       .catch(this.handleError);
   }
 
+  getProductsByUserid(userid : string) : Promise<void | Product[]>{
+    return this.http.get(this.URL + '/products/'+ userid)
+      .toPromise()
+      .then(response => response as Product[])
+      .catch(this.handleError);
+  }
+
+  getProduct(productId: string) : Promise<void | Product>{
+    return this.http.get(this.URL + '/product/' + productId)
+      .toPromise()
+      .then(response => response as Product)
+      .catch(this.handleError);
+  }
+
   getSingleUser(userId: string): Promise<void | User>{
     return this.http.get(this.URL + '/users/' + userId)
     .toPromise()
@@ -74,12 +88,18 @@ export class RestApiService {
   // }
 
   
-  createProduct(name: string, description: string, price: string, image: File): void {
+  createProduct(name: string, description: string, price: string, image: File,fullname: string,
+    address: string, state: string, phonenumber : string, userid: string): void {
     const data = new FormData();
     data.append("title", name);
     data.append("description",description);
     data.append("price", price);
     data.append("image", image, name);
+    data.append("fullname", fullname);
+    data.append("address", address);
+    data.append("state", state);
+    data.append("phonenumber", phonenumber);
+    data.append("userid", userid);
     this.http
       .post<{ product: Product }>(this.URL + '/products/', data)
       .subscribe((productData) => {
@@ -89,7 +109,12 @@ export class RestApiService {
           description: description,
           price : price,
           imagePath: productData.product.imagePath,
-          isSelected : false
+          fullname : fullname,
+          address: address,
+          phonenumber : phonenumber,
+          state: state,
+          isSelected : false,
+          userid : userid,
         };
         this.products.push(product);
         this.products$.next(this.products);

@@ -36,6 +36,7 @@
                 class="form-control"
                 placeholder="ex. name@gmail.com"
                 [(ngModel)]="newUser.email"
+                required
               />
               <small class="form-text text-muted">
                 We'll never share your email with anyone else.
@@ -107,6 +108,7 @@
                 />
               </div>
             </div>
+            <div><app-message></app-message></div>
             <div class="form-group mt-3">
               <button type="submit" class="btn btn-primary btn-block">
                 Register

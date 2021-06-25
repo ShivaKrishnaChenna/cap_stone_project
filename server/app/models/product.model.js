@@ -4,7 +4,12 @@ const ProductSchema = mongoose.Schema({
     title: String,
     description: String,
     price: String,
-    imagePath: String
+    imagePath: String,
+    fullname: String,
+    address: String,
+    state: String,
+    phonenumber: String,
+    userid : String,
 }, {
     timestamps: true
 });

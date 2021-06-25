@@ -7,6 +7,7 @@
 			<th>DESCRIPTION</th>
             <th>COST</th>
             <th>Expected Shipment Date</th>
+			<th>VIEW SHIPMENT</th>
 			<th>CANCEL SHIPMENT</th>
 		</tr>
 		<tr *ngFor="let item of products; let i = index">
@@ -14,6 +15,7 @@
 			<td>{{item.description}}</td>
             <td>{{item.price}}</td>
             <td></td>
+			<td> <button (click) = "viewProductDetails(item._id)">VIEW</button></td>
 			<td> <button (click) = "deleteProduct(item._id)">CANCEL</button></td>
 		</tr>
 </table>

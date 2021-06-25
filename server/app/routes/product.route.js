@@ -9,8 +9,11 @@ module.exports = (app) => {
     // Retrieve all 
     app.get('/products', products.findAll);
 
+    // Retrieve all 
+    app.get('/products/:userid', products.findAllByUserId);
+
     // Retrieve a single
-    app.get('/products/:productId', products.findOne);
+    app.get('/product/:productId', products.findOne);
 
     // Update 
     app.put('/products/:productId', products.update);

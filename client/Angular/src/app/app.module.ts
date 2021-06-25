@@ -12,6 +12,7 @@ import { GlobalDataManager } from './global-data-manager.service';
 import { CreateComponent } from './root/create/create.component';
 import { MessageComponent } from './root/message/message.component';
 import { TrackingDetailsComponent } from './root/tracking-details/tracking-details.component';
+import { ShipmentDetailsComponent } from './root/shipment-details-component/shipment-details.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { TrackingDetailsComponent } from './root/tracking-details/tracking-detai
     CreateComponent,
     MessageComponent,
     TrackingDetailsComponent,
+    ShipmentDetailsComponent,
   ],
   imports: [
     BrowserModule, 

@@ -14,7 +14,12 @@ exports.create = async (req, res) => {
         title: req.body.title, 
         description: req.body.description,
         price: req.body.price,
-        imagePath: imagePath
+        imagePath: imagePath,
+        fullname: req.body.fullname,
+        address: req.body.address,
+        phonenumber: req.body.phonenumber,
+        state: req.body.state,
+        userid: req.body.userid,
     });
 
      // Save Product in the database
@@ -38,6 +43,20 @@ exports.create = async (req, res) => {
 // Retrieve and return all products from the database.
 exports.findAll = (req, res) => {
   Product.find()
+    .then((products) => {
+      res.send(products);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving products.",
+      });
+    });
+};
+
+// Retrieve and return all products from the database for a specific user.
+exports.findAllByUserId = (req, res) => {
+  Product.find( { userid:req.params.userid })
     .then((products) => {
       res.send(products);
     })

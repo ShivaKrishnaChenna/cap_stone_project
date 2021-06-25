@@ -2,10 +2,9 @@
 <div class="card-body">
         <h4 class="display-4">Post a Product for Shipment</h4>
         <hr />
-        <app-message></app-message>
         <form [formGroup]="form" (submit)="onSubmit()">
           <div class="form-group">
-            <label class="form-control-label">Title</label>
+            <label class="form-control-label">Product Name</label>
             <input
               formControlName="name"
               type="text"
@@ -16,13 +15,13 @@
           </div>
         
           <div class="form-group">
-            <label>Description</label>
+            <label>Product Description</label>
             <textarea
               formControlName="description"
               class="form-control"
               id="description"
               name="description"
-              rows="5"
+              rows="2"
             ></textarea>
           </div>
           <div class="form-group">
@@ -44,8 +43,55 @@
               />
            </div>
             <div *ngIf="imageData">
-              <img [src]="imageData" [alt]="form.value.name" />
+              <img class="imageview" [src]="imageData" [alt]="form.value.name" />
             </div>
+            <div>
+            <h3>Destination Address</h3>
+            <div class="row">
+              <div class="col-6 form-group">
+              <label>Full Name</label>
+              <input
+                formControlName="fullname"
+                class="form-control"
+                id="fullname"
+                name="fullname"
+                rows="5"
+              />
+              </div>
+              <div class="col-6 form-group">
+                <label>Address</label>
+                <input
+                  formControlName="address"
+                  class="form-control"
+                  id="address"
+                  name="address"
+                  rows="5"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 form-group">
+              <label>State / Province / Region</label>
+              <input
+                formControlName="state"
+                class="form-control"
+                id="state"
+                name="state"
+              />
+              </div>
+              <div class="col-6 form-group">
+                <label>Phone Number</label>
+                <input
+                  formControlName="phonenumber"
+                  class="form-control"
+                  id="phonenumber"
+                  name="phonenumber"
+                />
+              </div>
+            </div>
+
+            </div>
+            <div><app-message></app-message></div>
           <button
             type="submit"
             class="btn btn-success"

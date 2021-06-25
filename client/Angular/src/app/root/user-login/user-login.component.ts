@@ -40,6 +40,8 @@ export class UserLoginComponent implements OnInit {
     this.users.forEach((x) => {
       if (x.email == this.email && x.password == this.password) {
         this.getUser(x._id);
+      } else {
+        this.globalService.error("Invalid credentials.");
       }
     });
     }

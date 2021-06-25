@@ -5,4 +5,9 @@ export class Product {
     price: String;
     imagePath: String;
     isSelected: boolean;
+    fullname: String;
+    address: String;
+    phonenumber: String;
+    state: String;
+    userid: String;
 }
