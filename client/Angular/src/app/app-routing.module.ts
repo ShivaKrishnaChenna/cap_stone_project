@@ -6,6 +6,7 @@ import { UserLoginComponent } from './root/user-login/user-login.component';
 import { UserRegisterComponent } from './root/user-register/user-register.component';
 import { CreateComponent } from './root/create/create.component';
 import { TrackingDetailsComponent } from './root/tracking-details/tracking-details.component';
+import { AboutComponent } from './root/about/about.component';
 
 
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'user-login', component: UserLoginComponent },
   { path: 'user-register', component: UserRegisterComponent },
   { path: 'tracking-detials', component: TrackingDetailsComponent },
+  { path: 'about', component: AboutComponent },
 ];
 
 @NgModule({

@@ -34,6 +34,7 @@ export class UserRegisterComponent implements OnInit {
       this.globalService.error("Please enter the password.");
       return false;
     }
+    else
       return true;
   }
 
