@@ -25,6 +25,11 @@ body{
   background-color: cornsilk;
 }
 
+.imageview { 
+  width: 50%;
+  height: auto;
+  margin: 0px 100px;
+}
 
 .submit-btn{
     width: 20%;

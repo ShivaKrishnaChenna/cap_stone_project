@@ -11,35 +11,35 @@
 		<form>
 			<div class="contact-form">
 				<div class="form-group">
-				  <label class="control-label col-sm-2" for="fname">Product Name:</label>
+				  <label class="control-label col-sm-3" for="fname">Product Name:</label>
 				  <div class="col-sm-10">          
 					<input type="text" class="form-control" name="firstName"
 					id="fname" placeholder="Enter name of the product" >
 				  </div>
 				</div>
 				<div class="form-group">
-				  <label class="control-label col-sm-2" for="lname">Product Weight:</label>
+				  <label class="control-label col-sm-3" for="lname">Product Cost:</label>
 				  <div class="col-sm-10">          
 					<input type="text" class="form-control" name="lastName"
 					id="lname" placeholder="Enter weight of the product" >
 				  </div>
 				</div>
 				<div class="form-group">
-				  <label class="control-label col-sm-2" for="email">Email:</label>
+				  <label class="control-label col-sm-3" for="email">Email:</label>
 				  <div class="col-sm-10">
 					<input type="email" class="form-control" id="email" name="email"
 					placeholder="Enter your email" >
 				  </div>
 				</div>
 				<div class="form-group">
-				  <label class="control-label col-sm-2" for="comment">Product Details:</label>
+				  <label class="control-label col-sm-3" for="comment">Product Details:</label>
 				  <div class="col-sm-10">
 					<textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
 				  </div>
 				</div>
 				<div class="form-group">        
 				  <div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default">Submit</button>
+					<button type="submit" (click) = "submitClaim()" class="btn btn-default">Submit</button>
 				  </div>
 				</div>
 			</div>

@@ -43,6 +43,7 @@
                                 </select>
                                  <button  col-sm-2 class="submit-btn btn btn-success" type="submit" (click) = "submitTracking()"  >Submit</button>
                             </div>
+
                             <div class="h4 text-center pt-3">Destination Address</div>
                             <div class="form-group">
                                 <label class="col-sm-5 control-label" for="inputContact5">Full Name</label>
@@ -68,7 +69,9 @@
                                     <input disabled class="form-control" id="inputContact8" type="text"  value={{product.state}}>
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <img class="imageview"  src='{{product.imagePath}}' />
+                            </div>
                         </form>
                     </div>
                 </div>
