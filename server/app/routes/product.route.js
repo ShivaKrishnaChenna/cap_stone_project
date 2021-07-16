@@ -15,9 +15,8 @@ module.exports = (app) => {
     // Retrieve a single
     app.get('/product/:productId', products.findOne);
 
-    // Update 
-    app.put('/products/:productId', products.update);
-
     // Delete 
     app.get('/products/delete/:productId', products.delete);
+    
+    app.post('/product/:productId', products.update);
 }

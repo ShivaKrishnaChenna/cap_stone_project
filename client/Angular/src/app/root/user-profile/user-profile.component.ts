@@ -22,7 +22,9 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.globalService.getUser();
+    if(this.user.imagePath == null) {
     this.user.imagePath = "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80";
+    }
   }
 
   onFileSelect(event: Event) {

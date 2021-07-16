@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { User } from "./models/user";
 import { Product } from "./models/product";
-import { Subject } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { Contact } from "./models/contact";
 
 //exporting the RestAPi Service
@@ -13,8 +13,6 @@ import { Contact } from "./models/contact";
 
 export class RestApiService {
 
-  private products: Product[] = [];
-  private products$ = new Subject<Product[]>();
   private URL = 'http://localhost:3090';
     
   constructor(private http: HttpClient) {}
@@ -99,17 +97,13 @@ export class RestApiService {
     .catch(this.handleError);
   }
 
-  // createProduct(product: Product): Promise<void | Product> {
-  //   return this.http.post(this.URL + '/products/', product)
-  //   .toPromise()
-  //   .then(response => {response as Product
-  //   })
-  //   .catch(this.handleError);
-  // }
+  updateProduct(product : Product) {
+    return this.http.post(this.URL + '/product/'+ product._id, product);
+  }
 
   
   createProduct(name: string, description: string, price: string, image: File,fullname: string,
-    address: string, state: string, phonenumber : string, status: string, userid: string): void {
+    address: string, state: string, phonenumber : string, status: string, userid: string){
     const data = new FormData();
     data.append("title", name);
     data.append("description",description);
@@ -121,26 +115,8 @@ export class RestApiService {
     data.append("phonenumber", phonenumber);
     data.append("status", status);
     data.append("userid", userid);
-    this.http
-      .post<{ product: Product }>(this.URL + '/products/', data)
-      .subscribe((productData) => {
-        const product: Product = {
-          _id: productData.product._id,
-          title: name,
-          description: description,
-          price : price,
-          imagePath: productData.product.imagePath,
-          fullname : fullname,
-          address: address,
-          phonenumber : phonenumber,
-          status: status,
-          state: state,
-          isSelected : false,
-          userid : userid,
-        };
-        this.products.push(product);
-        this.products$.next(this.products);
-      });
+    return this.http
+      .post<{ product: Product }>(this.URL + '/products/', data);
   }
     
   private handleError(error: any){

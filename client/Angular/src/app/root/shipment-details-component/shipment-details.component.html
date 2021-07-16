@@ -34,6 +34,15 @@
                                 <li class="job-status job-closed"  [ngClass]="{'job-inprogress is-active negative': product.status == 'delivered'}" >Delivered</li>
                             </ul>
                             </div>
+                            <div class="card edit-card" *ngIf="globalService.isAdmin">
+                            	<select #select  (click)="updateTracking(select.value)">
+                                    <option>Select</option>
+                                    <option *ngFor="let item of this.dataList;let i = index;" value="{{item.code}}" [selected]="item.code == product.status">
+                                        {{item.name}}
+                                    </option>
+                                </select>
+                                 <button  col-sm-2 class="submit-btn btn btn-success" type="submit" (click) = "submitTracking()"  >Submit</button>
+                            </div>
                             <div class="h4 text-center pt-3">Destination Address</div>
                             <div class="form-group">
                                 <label class="col-sm-5 control-label" for="inputContact5">Full Name</label>

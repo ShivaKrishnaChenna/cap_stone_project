@@ -94,20 +94,25 @@ exports.findOne = (req, res) => {
 
 // Update a product identified by the productId in the request
 exports.update = (req, res) => {
-  // Validate Request
-  if (!req.body.description) {
-    return res.status(400).send({
-      message: "Product description can not be empty",
-    });
-  }
+
+  const product = new Product({
+    _id: req.params.productId,
+    title: req.body.title, 
+    description: req.body.description,
+    price: req.body.price,
+    imagePath: req.body.imagePath,
+    fullname: req.body.fullname,
+    address: req.body.address,
+    phonenumber: req.body.phonenumber,
+    status: req.body.status,
+    state: req.body.state,
+    userid: req.body.userid,
+});
 
   // Find product and update it with the request body
   Product.findByIdAndUpdate(
     req.params.productId,
-    {
-      title: req.body.title || "Untitled Product",
-      description: req.body.description,
-    },
+    product,
     { new: true }
   )
     .then((product) => {

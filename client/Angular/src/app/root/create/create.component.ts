@@ -6,6 +6,7 @@ import { GlobalDataManager } from 'src/app/global-data-manager.service';
 import { Product } from 'src/app/models/product';
 import { RestApiService } from 'src/app/rest-api.service';
 import { User } from 'src/app/models/user';
+import { Subject } from 'rxjs';
 //import { exit } from 'node:process';
 
 @Component({
@@ -19,6 +20,8 @@ export class CreateComponent implements OnInit {
   form: FormGroup;
   imageData: string;
   public user : User;
+  private products: Product[] = [];
+  private products$ = new Subject<Product[]>();
 
   constructor(
     private router: Router,
@@ -87,10 +90,29 @@ export class CreateComponent implements OnInit {
     this.rest.createProduct(this.form.value.name,this.form.value.description,
       this.form.value.price, this.form.value.image, this.form.value.fullname,
       this.form.value.address, this.form.value.state, this.form.value.phonenumber, "processing",
-      this.user._id.toString());
-      this.form.reset();
-      this.imageData = null;
-      this.router.navigate(['']);
+      this.user._id.toString()).subscribe((productData) => {
+        let data = productData.product;
+        const product: Product = {
+          _id: data._id,
+          title: data.title,
+          description: data.description,
+          price : data.price,
+          imagePath: data.imagePath,
+          fullname : data.fullname,
+          address: data.address,
+          phonenumber : data.phonenumber,
+          status: data.status,
+          state: data.state,
+          isSelected : false,
+          userid : data.userid,
+        };
+        this.products.push(product);
+        this.products$.next(this.products);
+          this.form.reset();
+          this.imageData = null;
+          this.router.navigate(['payment/'+ data._id]);
+      });
+      
   }
   }
 }

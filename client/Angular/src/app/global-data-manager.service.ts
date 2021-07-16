@@ -86,8 +86,6 @@ export class GlobalDataManager implements OnDestroy {
     }
   }
 
-
-
   //   public appendProblems(problems: MemberProblem[], reset = true) {
   //     if (problems) {
   //       if (reset) {

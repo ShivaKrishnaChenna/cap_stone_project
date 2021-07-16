@@ -2,7 +2,7 @@ export class Product {
     _id : String;
     title : String;
     description : String;
-    price: String;
+    price: string;
     imagePath: String;
     isSelected: boolean;
     fullname: String;

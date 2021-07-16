@@ -16,6 +16,7 @@ import { ShipmentDetailsComponent } from './root/shipment-details-component/ship
 import { UserProfileComponent } from './root/user-profile/user-profile.component';
 import { ServicesComponent } from './root/services/services.component';
 import { ContactComponent } from './root/contact/contact.component';
+import { PaymentComponent } from './root/payment/payment.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { ContactComponent } from './root/contact/contact.component';
     UserProfileComponent,
     ServicesComponent,
     ContactComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule, 

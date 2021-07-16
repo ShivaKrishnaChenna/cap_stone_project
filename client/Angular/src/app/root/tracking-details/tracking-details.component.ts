@@ -14,19 +14,32 @@ export class TrackingDetailsComponent implements OnInit {
 
   public products : Product[];
   public user : User;
+  public displayMode = "View";
 
   constructor(
     private router: Router,
     private rest: RestApiService,
-    private globalService: GlobalDataManager) { }
+    public globalService: GlobalDataManager) { }
 
   ngOnInit(): void {
     this.user = this.globalService.user;
+    if(this.globalService.isAdmin) {
+      this.displayMode = "Edit";
+      this.getALLProducts();
+    } else {
     this.getProducts(this.user._id);
+    }
   }
 
   public getProducts(userid) {
     this.rest.getProductsByUserid(userid)
+      .then((products : Product[] ) => {
+        this.products = products;
+      });
+  }
+
+  public getALLProducts() {
+    this.rest.getProducts()
       .then((products : Product[] ) => {
         this.products = products;
       });

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { GlobalDataManager } from 'src/app/global-data-manager.service';
 import { Product } from 'src/app/models/product';
 import { RestApiService } from 'src/app/rest-api.service';
 
@@ -10,11 +11,21 @@ import { RestApiService } from 'src/app/rest-api.service';
 })
 export class ShipmentDetailsComponent implements OnInit {
   
-  constructor(private route: ActivatedRoute,
-    private rest: RestApiService,) { }
-
   id : string;
   product : Product;
+  dataList: Array<any> = [];
+
+  constructor(private route: ActivatedRoute,
+    private rest: RestApiService,
+    private router: Router,
+    public globalService: GlobalDataManager) { 
+      this.dataList = [
+        { code: "processing", name: "Processing" },
+        { code: "packed", name: "Packed" },
+        { code: "shipped", name: "Shipped" },
+        { code: "delivered", name: "Delivered" }
+      ]
+    }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -26,6 +37,16 @@ export class ShipmentDetailsComponent implements OnInit {
       .then((product : Product ) => {
         this.product = product;
       });
+  }
+
+  public updateTracking(value) {
+    this.product.status = value;
+  }
+
+  public submitTracking(){
+    this.rest.updateProduct(this.product).subscribe(x => {
+      this.router.navigate(['tracking-detials']);
+    });
   }
 
 }
