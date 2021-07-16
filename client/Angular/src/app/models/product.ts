@@ -9,5 +9,6 @@ export class Product {
     address: String;
     phonenumber: String;
     state: String;
+    status: String;
     userid: String;
 }

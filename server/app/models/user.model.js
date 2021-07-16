@@ -5,6 +5,7 @@ const UserSchema = mongoose.Schema({
     email: String,
     password: String,
     isAdmin: Boolean,
+    imagePath: String,
 }, {
     timestamps: true
 });

@@ -51,9 +51,16 @@ p {
   flex-grow: 0;
 }
 
+.profileText {
+  display: inline-block;
+  width: 74px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
 
 .heading {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   color: brown;
 }

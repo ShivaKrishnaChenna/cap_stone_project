@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { User } from "./models/user";
 import { Product } from "./models/product";
 import { Subject } from "rxjs";
+import { Contact } from "./models/contact";
 
 //exporting the RestAPi Service
 @Injectable()
@@ -56,7 +57,7 @@ export class RestApiService {
     .toPromise()
     .then(response => response as User)
     .catch(this.handleError);
-    }
+  }
 
   // updateFood(newFood: Food): Promise<void | Food> {
   //   return this.http.post(this.foodsUrl + '/' + newFood._id, newFood)
@@ -79,6 +80,25 @@ export class RestApiService {
     .catch(this.handleError);
   }
 
+  saveContact(contact: Contact): Promise<void | Contact> {
+    return this.http.post(this.URL + '/contacts/', contact)
+    .toPromise()
+    .then(response => response as Contact)
+    .catch(this.handleError);
+  }
+
+  updateUser(user : User) : Promise<void | User> {
+    const data = new FormData();
+    data.append("name", user.name);
+    data.append("email",user.email);
+    data.append("password", user.password);
+    data.append("image",user.image,user.imagePath);
+    return this.http.post(this.URL + '/user/'+ user._id, data)
+    .toPromise()
+    .then(response => response as User)
+    .catch(this.handleError);
+  }
+
   // createProduct(product: Product): Promise<void | Product> {
   //   return this.http.post(this.URL + '/products/', product)
   //   .toPromise()
@@ -89,7 +109,7 @@ export class RestApiService {
 
   
   createProduct(name: string, description: string, price: string, image: File,fullname: string,
-    address: string, state: string, phonenumber : string, userid: string): void {
+    address: string, state: string, phonenumber : string, status: string, userid: string): void {
     const data = new FormData();
     data.append("title", name);
     data.append("description",description);
@@ -99,6 +119,7 @@ export class RestApiService {
     data.append("address", address);
     data.append("state", state);
     data.append("phonenumber", phonenumber);
+    data.append("status", status);
     data.append("userid", userid);
     this.http
       .post<{ product: Product }>(this.URL + '/products/', data)
@@ -112,6 +133,7 @@ export class RestApiService {
           fullname : fullname,
           address: address,
           phonenumber : phonenumber,
+          status: status,
           state: state,
           isSelected : false,
           userid : userid,

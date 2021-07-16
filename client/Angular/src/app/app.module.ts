@@ -13,6 +13,9 @@ import { CreateComponent } from './root/create/create.component';
 import { MessageComponent } from './root/message/message.component';
 import { TrackingDetailsComponent } from './root/tracking-details/tracking-details.component';
 import { ShipmentDetailsComponent } from './root/shipment-details-component/shipment-details.component';
+import { UserProfileComponent } from './root/user-profile/user-profile.component';
+import { ServicesComponent } from './root/services/services.component';
+import { ContactComponent } from './root/contact/contact.component';
 
 
 @NgModule({
@@ -24,6 +27,9 @@ import { ShipmentDetailsComponent } from './root/shipment-details-component/ship
     MessageComponent,
     TrackingDetailsComponent,
     ShipmentDetailsComponent,
+    UserProfileComponent,
+    ServicesComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule, 

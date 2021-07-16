@@ -86,7 +86,7 @@ export class CreateComponent implements OnInit {
     if(this.validation()) {
     this.rest.createProduct(this.form.value.name,this.form.value.description,
       this.form.value.price, this.form.value.image, this.form.value.fullname,
-      this.form.value.address, this.form.value.state, this.form.value.phonenumber,
+      this.form.value.address, this.form.value.state, this.form.value.phonenumber, "processing",
       this.user._id.toString());
       this.form.reset();
       this.imageData = null;

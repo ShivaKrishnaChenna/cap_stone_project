@@ -8,6 +8,9 @@ import { CreateComponent } from './root/create/create.component';
 import { TrackingDetailsComponent } from './root/tracking-details/tracking-details.component';
 import { AboutComponent } from './root/about/about.component';
 import { ShipmentDetailsComponent } from './root/shipment-details-component/shipment-details.component';
+import { UserProfileComponent } from './root/user-profile/user-profile.component';
+import { ServicesComponent } from './root/services/services.component';
+import { ContactComponent } from './root/contact/contact.component';
 
 
 
@@ -19,6 +22,9 @@ const routes: Routes = [
   { path: 'tracking-detials', component: TrackingDetailsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'shipment-details/:id', component: ShipmentDetailsComponent },
+  {path: 'user-profile', component: UserProfileComponent},
+  {path: 'services', component: ServicesComponent},
+  {path: 'contact', component: ContactComponent},
 ];
 
 @NgModule({

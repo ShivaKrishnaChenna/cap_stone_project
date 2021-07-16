@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid" style="width: 90%">
+  <div class="container-fluid" style="width: 95%">
     <a class="navbar-brand heading" routerLink="">Global Shipment Service</a>
     <button
       class="navbar-toggler"
@@ -20,7 +20,7 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/" routerLinkActive="active">HOME</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="!globalService.isAdmin" class="nav-item">
           <a class="nav-link" routerLink="create" routerLinkActive="active"
             >SHIP PRODUCT</a>
         </li>
@@ -37,6 +37,16 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="about" routerLinkActive="active"
             >ABOUT US</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="services" routerLinkActive="active"
+            >SERVICES</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="contact" routerLinkActive="active"
+            >CONTACT</a
           >
         </li>
         <div
@@ -75,7 +85,7 @@
                   <span class="icon icon-xs rounded-circle bg-primary">
                     <i class="fa fa-user white"></i>
                   </span>
-                  <p class="text">Hi, {{ globalService.user.name }}</p>
+                  <p class="profileText">Hi, {{ globalService.user.name }}</p>
                 </a>
                 <div
                   class="dropdown-menu dropdown-menu-right"
@@ -88,18 +98,18 @@
                     transform: translate3d(0px, 32px, 0px);
                   "
                 >
-                  <a class="dropdown-item">My profile</a>
+                  <a href="/user-profile" class="dropdown-item">My profile</a>
                   <a class="dropdown-item" (click)="globalService.resetUser()"
                     >Log out</a
                   >
                 </div>
-                <a href="" class="widget-header mr-2">
+                <!--<a href="" class="widget-header mr-2">
                   <div class="icon d-inline">
                     <i
                       class="icon-sm rounded-circle border fa fa-shopping-cart"
                     ></i>
                   </div>
-                </a>
+                </a> -->
               </div>
             </li>
           </div>
