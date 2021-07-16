@@ -11,6 +11,7 @@ import { ShipmentDetailsComponent } from './root/shipment-details-component/ship
 import { UserProfileComponent } from './root/user-profile/user-profile.component';
 import { ServicesComponent } from './root/services/services.component';
 import { ContactComponent } from './root/contact/contact.component';
+import { ClaimsComponent } from './claims/claims.component';
 import { PaymentComponent } from './root/payment/payment.component';
 
 
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'user-profile', component: UserProfileComponent},
   {path: 'services', component: ServicesComponent},
   {path: 'contact', component: ContactComponent},
+  {path:'claims', component: ClaimsComponent},
   {path: 'payment/:id', component: PaymentComponent}
 ];
 
