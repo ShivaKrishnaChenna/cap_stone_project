@@ -53,8 +53,8 @@ userRoute(app)
 
 
 // listen for requests
-app.listen(3090, () => {
-    console.log("Server is listening on port 3090");
+app.listen(process.env.PORT, () => {
+    console.log("Server is listening on port " + process.env.PORT);
 });
 
 module.exports = app;
