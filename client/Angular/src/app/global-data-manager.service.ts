@@ -51,6 +51,7 @@ export class GlobalDataManager implements OnDestroy {
     this.user = null;
     this.showLogin = true;
     this.isAdmin = false;
+    this.router.navigate(['user-login']);
   }
 
   error(message) {

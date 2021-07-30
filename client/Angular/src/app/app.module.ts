@@ -18,6 +18,7 @@ import { ServicesComponent } from './root/services/services.component';
 import { ContactComponent } from './root/contact/contact.component';
 import { PaymentComponent } from './root/payment/payment.component';
 import { ClaimsComponent } from './claims/claims.component';
+import { CareersComponent } from './root/careers/careers.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { ClaimsComponent } from './claims/claims.component';
     ContactComponent,
     PaymentComponent,
     ClaimsComponent,
+    CareersComponent,
   ],
   imports: [
     BrowserModule, 

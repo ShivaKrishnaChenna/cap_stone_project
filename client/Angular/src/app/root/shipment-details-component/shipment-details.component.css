@@ -20,9 +20,15 @@ body{
     height: 48px!important;
 }
 
+.text-center{
+  margin-right: 100px;
+}
+
 .edit-card {
   padding: 30px;
   background-color: cornsilk;
+  width: 80%;
+  margin-left: 15px;
 }
 
 .imageview { 
@@ -43,6 +49,7 @@ body{
       margin: 0;
     }
   }
+
   .multi-steps-wrap .multi-steps {
     display: table;
     table-layout: fixed;

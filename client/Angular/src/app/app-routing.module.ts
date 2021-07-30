@@ -13,6 +13,7 @@ import { ServicesComponent } from './root/services/services.component';
 import { ContactComponent } from './root/contact/contact.component';
 import { ClaimsComponent } from './claims/claims.component';
 import { PaymentComponent } from './root/payment/payment.component';
+import { CareersComponent } from './root/careers/careers.component';
 
 
 
@@ -28,7 +29,8 @@ const routes: Routes = [
   {path: 'services', component: ServicesComponent},
   {path: 'contact', component: ContactComponent},
   {path:'claims', component: ClaimsComponent},
-  {path: 'payment/:id', component: PaymentComponent}
+  {path: 'payment/:id', component: PaymentComponent},
+  {path: 'careers', component: CareersComponent}
 ];
 
 @NgModule({

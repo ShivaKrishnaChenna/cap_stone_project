@@ -26,7 +26,7 @@
                                     <input disabled class="form-control" id="inputContact3" type="text" value={{product.price}}>
                                 </div>
                             </div>
-                            <div class="row multi-steps-wrap pt-5">
+                            <div style="margin-right:100px;" class="row multi-steps-wrap pt-5">
                             <ul class="list-unstyled multi-steps">
                                 <li class="job-status job-created" [ngClass]="{'job-inprogress is-active negative': product.status == 'processing'}" >processing</li>
                                 <li class="job-status" [ngClass]="{'job-inprogress is-active negative': product.status == 'packed'}" >Packed</li>
